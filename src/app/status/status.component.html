@@ -1,0 +1,30 @@
+<h2>My Leave Applicatios Section</h2><br><br>
+<div ng-app="myApp" ng-controller="leaveTable">
+<table style="width:100%">
+  <tr>
+    <th>Leave ID</th>
+    <th>Number of days</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Leave Type</th>
+    <th>Status</th>
+    <th>Reason</th>
+    <th>Applied On</th>
+    <th>Manager Comments</th>
+  </tr>
+  <tr *ngFor="let leav of leaveData">
+    <td>{{leav.leaveId}}</td>
+    <td>{{leav.days}}</td>
+    <td>{{leav.start}}</td>
+    <td>{{leav.end}}</td>
+    <td>{{leav.type}}</td>
+    <td>{{leav.status}}</td>
+    <td>{{leav.reason}}</td>
+    <td>{{leav.applied}}</td>
+    <td>{{leav.comments}}</td>
+  </tr>
+  
+</table>
+</div>
+<br>
+<button type="button">New Application</button>

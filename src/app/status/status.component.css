@@ -1,0 +1,13 @@
+table th{
+    background-color:#4571C7;
+    color:white;
+}
+table td{
+    background-color:#CED6EB;
+}
+button {
+    background-color: #407AC0;
+    color:white;
+    margin:15px;
+    padding:8px 15px 5px 15px;
+}
