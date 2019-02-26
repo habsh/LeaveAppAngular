@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CredentialsService } from '../credentials.service';
+import { HttpClient, HttpHeaders,HttpErrorResponse, HttpHandler } from '@angular/common/http';
 
 var jsontxt=`[{
   "leaveId": 1234,
@@ -26,14 +27,16 @@ export class StatusComponent implements OnInit {
   title = 'chkleave';
   leaveData:string[];
   outputData;
+  
+  constructor(private http:HttpClient){
+  }
+  
   ngOnInit(){
     this.leaveData=json;
     console.log(this.leaveData);
+    this.http.get("https://reqres.in/api/users?page=2").subscribe(data => console.log(data));
   }
   create(){
-    console.log("redirecting")
-      location.href= "/apply"
-    
+    location.href= "/apply"
   }
-
 }
