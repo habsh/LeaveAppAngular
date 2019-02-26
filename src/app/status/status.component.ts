@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CredentialsService } from '../credentials.service';
+
 var jsontxt=`[{
   "leaveId": 1234,
   "days": 5,
@@ -26,8 +28,12 @@ export class StatusComponent implements OnInit {
   outputData;
   ngOnInit(){
     this.leaveData=json;
-    console.log("initialized");
     console.log(this.leaveData);
+  }
+  create(){
+    console.log("redirecting")
+      location.href= "/apply"
+    
   }
 
 }
