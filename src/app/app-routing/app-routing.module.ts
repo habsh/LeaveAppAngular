@@ -6,8 +6,13 @@ import { PersonalComponent } from '../personal/personal.component';
 import { ManagerComponent } from '../manager/manager.component';
 import { DecisionComponent } from '../decision/decision.component';
 import { LoginComponent } from '../login/login.component';
+import { ApplyComponent } from '../apply/apply.component';
 
 const routes: Routes = [
+    {
+        path:'apply',
+        component:ApplyComponent
+    },
     {
         path:'login',
         component:LoginComponent
