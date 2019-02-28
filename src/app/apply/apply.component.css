@@ -1,0 +1,18 @@
+button {
+    background-color: #407AC0;
+    color:white;
+    margin:15px;
+    padding:8px 15px 5px 15px;
+}
+label{
+    display:inline-block;
+    width:150px;
+}
+strong{
+    color:red;
+    margin:15px;
+    padding:8px 15px 5px 15px;
+    margin-left: 80px;
+    margin-bottom: 100px;
+
+}
