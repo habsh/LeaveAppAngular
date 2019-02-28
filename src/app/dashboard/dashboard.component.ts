@@ -7,11 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  empId : number;
+  empId;
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
-    this.empId = this.route.snapshot.params['empId'];
+    this.empId = sessionStorage.getItem("empId")
+    if(this.empId==null){
+      location.href= "/login"
+    }
   }
 
 }
