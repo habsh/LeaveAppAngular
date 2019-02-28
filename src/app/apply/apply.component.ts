@@ -40,6 +40,11 @@ export class ApplyComponent implements OnInit{
           if (f.getTime() > t.getTime()) {
             return { invalidDates : "Date from should be less than Date to" }
           }
+          else{
+            var diff = Math.abs(t.getTime() - f.getTime());
+var diffDays = Math.ceil(diff / (1000 * 3600 * 24)); 
+          }
+          
           
       };
       
