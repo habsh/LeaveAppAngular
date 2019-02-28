@@ -1,3 +1,8 @@
-<p>
-  manager works!
-</p>
+Manager page
+<div *ngIf="manager">
+  
+  <div><span>Employee ID          :</span>{{manager.empId}}</div>
+  <div><span>Full name:           :</span>{{manager.empName | uppercase}}</div>
+  <div><span>Email address       :</span>{{manager.empMail}}</div>
+  <div><span>Mobile number        :</span>{{manager.empPhone}}</div>    
+</div>
