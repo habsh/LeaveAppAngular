@@ -1,3 +1,45 @@
-<p>
-  decision works!
-</p>
+<h2>My Reporting Employees' Pending Leave Applications Section</h2><br><br>
+<div ng-app="myApp" ng-controller="leaveTable">
+<table style="width:100%">
+  
+  <ng-container *ngFor="let emp of leaveData">
+    <tr>
+      <th colspan="2">Employee ID:</th>
+      <th>{{emp.empId}}</th>
+      <th colspan="2">Employee Name:</th>
+      <th>{{emp.empName}}</th>
+      <th colspan="2">Employee Leave Balance: </th>
+      <th>{{emp.empBalance}}</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Leave ID</th>
+      <th># of Days</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Leave Type</th>
+      <th>Status</th>
+      <th colspan="2">Reason</th>
+    </tr>
+    <ng-container *ngFor="let leav of emp.leaves">
+      <tr (click)="selectObj(leav.leaveId)">
+        <td></td>
+        <td>{{leav.leaveId}}</td>
+        <td>{{leav.days}}</td>
+        <td>{{leav.start}}</td>
+        <td>{{leav.end}}</td>
+        <td>{{leav.type}}</td>
+        <td>{{leav.status}}</td>
+        <td colspan="2">{{leav.reason}}</td>
+      </tr>
+    </ng-container>
+  </ng-container>
+
+  
+</table>
+</div>
+<br>
+<button (click)="decision('approve')" type="button" >Approve</button>
+<button (click)="decision('deny')" type="button" >Deny</button>
+
+<script data-require="angular-bootstrap@0.12.0" data-semver="0.12.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
