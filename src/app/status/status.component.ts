@@ -54,7 +54,7 @@ export class StatusComponent implements OnInit {
     this.http.get("https://reqres.in/api/users?page=2").subscribe(data => console.log(data));
     }
   create(){
-    location.href= "/apply"
+    location.href= "/apply/335"
   }
   expDetails(leav){
     console.log(leav)

@@ -20,8 +20,8 @@ export class RestService {
         endDate:formControl.controls['End_Date'].value,
         numDays:formControl.controls['Number_Of_Days'].value,
         leaveType:formControl.controls['Leave_Type'].value,
-        reasons:formControl.controls['Leave_Reason'].value
-        //employee: get emp id from session
+        reasons:formControl.controls['Leave_Reason'].value,
+        employee:formControl.controls['Employee_ID'].value
 
       }
       
