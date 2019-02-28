@@ -1,6 +1,5 @@
 import { Component ,OnInit, Input} from '@angular/core';
 import { FormsModule,ReactiveFormsModule,FormGroup,  FormBuilder,  Validators, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
-import { groupBy } from 'rxjs/internal/operators/groupBy';
 import { RestService } from './rest.service'
 
 @Component({
@@ -15,6 +14,7 @@ export class ApplyComponent implements OnInit{
   applyLeaveForm: FormGroup;
   submitted = false;
   testError = false;
+  numDays:number;
   restErrors: any[];
    constructor(private fb: FormBuilder, private restService: RestService) {  }
   ngOnInit() {
@@ -24,34 +24,32 @@ export class ApplyComponent implements OnInit{
         Number_Of_Days: [''],
         Leave_Type:[''],
         Leave_Reason:['']
-      }, {validator: this.dateLessThan('Start_Date','End_Date')},
+        }, {validator: this.dateLessThan('Start_Date','End_Date')},
       
       );
-
-    }
+  }
   
-    dateLessThan(first: string, last: string) {
-      
-      return (group: FormGroup): {[key: string]: any} => {
+  dateLessThan(first: string, last: string) {
+  
+    return (group: FormGroup): {[key: string]: any} => {
 
-          let f = new Date(group.controls["Start_Date"].value);
-          let t = new Date(group.controls["End_Date"].value);
-          this.title = "anything";
-          if (f.getTime() > t.getTime()) {
-            return { invalidDates : "Date from should be less than Date to" }
-          }
-          else{
-            var diff = Math.abs(t.getTime() - f.getTime());
-var diffDays = Math.ceil(diff / (1000 * 3600 * 24)); 
-          }
-          
-          
-      };
-      
-    }
+        let f = new Date(group.controls["Start_Date"].value);
+        let t = new Date(group.controls["End_Date"].value);
+        this.title = "anything";
+        if (f.getTime() > t.getTime()) {
+          return { invalidDates : "Date from should be less than Date to" }
+        }
+        else{
+          var diff = Math.abs(t.getTime() - f.getTime());
+          var diffDays = Math.ceil(diff/(1000*3600*24)) +1;
+          this.numDays=diffDays;
+        }
+    };
+  }
 public onSubmit(){
 
   if(this.applyLeaveForm.valid){
+    this.applyLeaveForm.controls["Number_Of_Days"].setValue(this.numDays);
     this.restService.update<any[]>(this.applyLeaveForm)
       .subscribe((data: any[]) => this.restErrors = data,
       error => () =>{
