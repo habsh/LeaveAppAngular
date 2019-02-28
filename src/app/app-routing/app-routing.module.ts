@@ -29,7 +29,7 @@ const routes: Routes = [
       component: StatusComponent
     },
     {
-        path: 'dashboard/:empId',
+        path: '',
         component: DashboardComponent,
     },
 ];

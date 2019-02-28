@@ -8,4 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'leaveapp';
   
+
+  ngOnInit(){
+    var path=location.pathname
+    var empId=sessionStorage.getItem("empId")
+    if(path!="/login"&&empId==null){
+      location.href="/login"
+    }
+  }
+  
 }

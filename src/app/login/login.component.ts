@@ -12,5 +12,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.empId = 335;
   }
+  login(){
+    sessionStorage.setItem("empId",this.empId.toString())
+    location.href="/"
+  }
 
 }

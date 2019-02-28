@@ -12,7 +12,6 @@ import { PersonalComponent } from './personal/personal.component';
 import { ManagerComponent } from './manager/manager.component';
 import { ApplyComponent } from './apply/apply.component';
 import { DecisionComponent } from './decision/decision.component';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
