@@ -1,3 +1,50 @@
-<p>
-  apply works!
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/
+3.0.3/css/bootstrap.min.css" />
+    <!-- JS -->
+    <script src="https://code.angularjs.org/1.4.0-rc.1/angular.js"></script>
+</head>
+<body >
+    <div class="container" style="width:600px">
+    <div ><h1>Apply Leave </h1></div>
+    <form [formGroup]="applyLeaveForm" (ngSubmit)="onSubmit()" method="post"> 
+        <div class="form-group" > 
+            
+<br>
+        <label>Start_Date</label>
+            <input type="date"  id="Start_Date"  formControlName="Start_Date" />
+            <br>
+
+             <label>End_Date</label>
+            <input type="date"  id="End_Date"  formControlName="End_Date" />
+            <div *ngIf="applyLeaveForm.hasError('invalidDates')" ><strong>End date should be greater than start date</strong> </div>
+            <br>
+
+             <label>Number_Of_Days</label>
+            <input type="number" id="Number_Of_Days" formControlName='Number_Of_Days' [(ngModel)]="numDays" />
+            <br>
+
+            <label>Leave_Type</label>
+            <select  id="Leave_Type"  formControlName='Leave_Type'>
+                <option value=""></option>
+                <option value="Earned leave/Privileged leave">Earned leave/Privileged leave
+                <option value="Sick leave">Sick leave
+                <option value="Maternity/Paternity leave">Maternity/Paternity leave
+              </select>
+              <br>
+
+              <label>Leave_Reason </label>
+                  <textarea name="Leave_Reason" id="Leave_Reason" formControlName='Leave_Reason' rows="7" cols="50"></textarea>
+                  <br>
+                </div>  
+        
+        <button type="submit" id="submit">Apply</button> 
+        <button type="reset" id="reset">Cancel</button>  
+      
+    </form>
+    </div>
+</body>
+</html>

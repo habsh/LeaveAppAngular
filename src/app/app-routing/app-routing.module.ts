@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApplyComponent } from '../apply/apply.component';
 import { StatusComponent } from '../status/status.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { PersonalComponent } from '../personal/personal.component';
 import { ManagerComponent } from '../manager/manager.component';
 import { DecisionComponent } from '../decision/decision.component';
 import { LoginComponent } from '../login/login.component';
-import { ApplyComponent } from '../apply/apply.component';
 
 const routes: Routes = [
     {
-        path:'apply',
+        path:'apply/:empId',
         component:ApplyComponent
     },
     {
@@ -22,7 +22,7 @@ const routes: Routes = [
         component:DecisionComponent
     },
     {
-        path:'manager',
+        path:'manager/:empId',
         component:ManagerComponent
     },
     {

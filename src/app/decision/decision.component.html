@@ -1,60 +1,46 @@
-<div class="container">
-  <div class="vertical-center">
-    <div class="d-flex justify-content-center">
-      <h1>Approve Deny Leave</h1>
-    </div><br>
-    <div class="row d-flex justify-content-center">
-      <div class="col-lg-2">
-      </div>
-      <div class="col-lg-2">
-        <div>Employee Id:</div>
-        <div>Employee Name:</div>
-        <div>Leave Balance:</div>
-        <!-- <div>Employee Id: {{ employeeId }}</div>
-        <div>Employee Name: {{ employeeName }}</div>
-        <div>Leave Balance: {{ leaveBalance }}</div> -->
-      </div>
-      <div class="col-lg-3">
-        <div>{{ leaveDetails.employeeId }}</div>
-        <div>{{ leaveDetails.employeeName }}</div>
-        <div>{{ leaveDetails.leaveBalance }}</div>
-        <!-- <div>{{ test.eno }}</div>
-        <div>{{ test.ename }}</div>
-        <div>{{ test.esalary }}</div> -->
-      </div>
-      <div class="col-lg-2">
-        <div>Start Date:</div>
-        <div>End Date:</div>
-        <div>Number of Days:</div>
-        <div>Leave Type:</div>
-        <div>Reason:</div>
-      </div>
-      <div class="col-lg-3">
-        <div>{{ leaveDetails.startDate }}</div>
-        <div>{{ leaveDetails.endDate }}</div>
-        <div>{{ leaveDetails.days }}</div>
-        <div>{{ leaveDetails.leaveType }}</div>
-        <div>{{ leaveDetails.reason }}</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-2">Comments:</div>
-      <div class="col-md-3 form-group">
-        <textarea class="form-control z-depth-1" id="comments" rows="3"></textarea>
-      </div>
-    </div>
-    <br>
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-1.5">
-        <button id="approve" class="btn btn-primary" (click)="updateLeaveDetails($event.target.id)">Aprove</button>
-      </div>
-      <div class="col-md-1">
-        <button id="deny" class="btn btn-primary" (click)="updateLeaveDetails($event.target.id)">Deny</button>
-      </div>
-      <div class="col-md-1.5">
-        <button class="btn btn-primary">Cancel</button>
-      </div>
-    </div>
-  </div>
+<h2>My Reporting Employees' Pending Leave Applications Section</h2><br><br>
+<div ng-app="myApp" ng-controller="leaveTable">
+<table style="width:100%">
+  
+  <ng-container *ngFor="let emp of leaveData">
+    <tr>
+      <th colspan="2">Employee ID:</th>
+      <th>{{emp.empId}}</th>
+      <th colspan="2">Employee Name:</th>
+      <th>{{emp.empName}}</th>
+      <th colspan="2">Employee Leave Balance: </th>
+      <th>{{emp.empBalance}}</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Leave ID</th>
+      <th># of Days</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Leave Type</th>
+      <th>Status</th>
+      <th colspan="2">Reason</th>
+    </tr>
+    <ng-container *ngFor="let leav of emp.leaves">
+      <tr (click)="selectObj(leav.leaveId)">
+        <td></td>
+        <td>{{leav.leaveId}}</td>
+        <td>{{leav.days}}</td>
+        <td>{{leav.start}}</td>
+        <td>{{leav.end}}</td>
+        <td>{{leav.type}}</td>
+        <td>{{leav.status}}</td>
+        <td colspan="2">{{leav.reason}}</td>
+      </tr>
+    </ng-container>
+  </ng-container>
+
+  
+</table>
 </div>
+<br>
+<button (click)="decision('approve')" type="button" >Approve</button>
+<button (click)="decision('deny')" type="button" >Deny</button>
+
+<script data-require="angular-bootstrap@0.12.0" data-semver="0.12.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+>>>>>>> master

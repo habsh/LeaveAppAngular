@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  empId: number;
   constructor() { }
 
   ngOnInit() {
+    this.empId = 335;
+  }
+  login(){
+    sessionStorage.setItem("empId",this.empId.toString())
+    location.href="/"
   }
 
 }

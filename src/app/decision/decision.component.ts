@@ -6,6 +6,60 @@ import { LeaveDetails } from './entity/leave-details';
 import { catchError } from 'rxjs/operators'; 
 import { ApplyDenyService } from './service/apply-deny.service';
 
+var jsontxt=`[
+  {
+    "empId":123,
+    "empName":"Ace",
+    "empBalance":12,
+    "leaves":[
+      {
+        "leaveId":123,
+        "days":3,
+        "start": "2012-05-10",
+        "end": "2012-05-12",
+        "type": "earned",
+        "status": "Pending",
+        "reason": "leave"
+      },
+      {
+        "leaveId":124,
+        "days":2,
+        "start": "2012-05-10",
+        "end": "2012-05-12",
+        "type": "earned",
+        "status": "Pending",
+        "reason": "leave"
+      }
+    ]
+  },
+  {
+    "empId":456,
+    "empName":"Bart",
+    "empBalance":12,
+    "leaves":[
+      {
+        "leaveId":125,
+        "days":3,
+        "start": "2012-05-10",
+        "end": "2012-05-12",
+        "type": "earned",
+        "status": "Pending",
+        "reason": "leave"
+      },
+      {
+        "leaveId":126,
+        "days":2,
+        "start": "2012-05-10",
+        "end": "2012-05-12",
+        "type": "earned",
+        "status": "Pending",
+        "reason": "leave"
+      }
+    ]
+  }
+]
+`;
+var json = JSON.parse(jsontxt);
 @Component({
   selector: 'app-decision',
   templateUrl: './decision.component.html',
@@ -14,43 +68,26 @@ import { ApplyDenyService } from './service/apply-deny.service';
 })
 export class DecisionComponent implements OnInit {
 
-  leaveDetails:LeaveDetails;
-  updatedLeaveDetails:LeaveDetails;
-
-  constructor(private applyDenyService:ApplyDenyService) {
-    this.leaveDetails=new LeaveDetails;
-  }
-  
-  ngOnInit(){
-    this.applyDenyService.getLeaveData().subscribe((data: LeaveDetails) => this.leaveDetails = data,
-          error => this.showErrorAlert(error));
-  }
-
-  aprove(id:string){
-    this.updateLeaveDetails(id);
-  }
-
-  deny(id:string){
-    this.updateLeaveDetails(id);
-  }
-
-  updateLeaveDetails(id:string){
+  leaveData:string[];
+  constructor(private http:HttpClient) { }
+  selectedItem
+  ngOnInit() 
+  {this.leaveData=json;
+    console.log(this.leaveData);
+    this.http.get("https://reqres.in/api/users?page=2").subscribe(data => console.log(data));
     
-    this.updatedLeaveDetails=new LeaveDetails;
-    this.updatedLeaveDetails=this.leaveDetails;
-    
-    this.updatedLeaveDetails.status=id;
-    this.applyDenyService.postAcceptLeave(this.updatedLeaveDetails)
-                        .subscribe(ld => {
-                                        alert('Leave was '+ld.status);},
-                          error => this.showErrorAlert(error),
-                          () => console.log('****************Completed**************')
-                        );
   }
-
-
-  showErrorAlert(error:any){
-    alert(error);
+  decision(type){
+    if(this.selectedItem==null){
+      window.alert("No item was selected!")
+    }else{
+      window.alert(type+" for "+this.selectedItem);
+    }
+    
+  }
+  selectObj(leaveId){
+      console.log(leaveId)
+      this.selectedItem=leaveId
   }
 
 }
