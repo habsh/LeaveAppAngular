@@ -39,10 +39,10 @@ export class DecisionComponent implements OnInit {
     }
     
   }
-  selectObj(leaveId){
-      console.log(leaveId)
+  selectObj(leave){
+      console.log(leave.leaveId)
       this.leaveDataId=null;
-      this.leaveDataId=leaveId
+      this.leaveDataId=leave.leaveId;
   }
 
   approvalRoute(){

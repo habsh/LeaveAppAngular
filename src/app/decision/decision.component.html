@@ -22,7 +22,7 @@
       <th colspan="2">Reason</th>
     </tr>
     <ng-container *ngFor="let leav of emp.leaves">
-      <tr (click)="selectObj(leav.leaveId)">
+      <tr (click)="selectObj(leav)" [ngClass]="{'highlight':leav.leaveId==leaveDataId}">
         <td></td>
         <td>{{leav.leaveId}}</td>
         <td>{{leav.days}}</td>
