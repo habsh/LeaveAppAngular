@@ -3,6 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { LeaveDetails } from '../entity/leave-details';
 import { catchError } from 'rxjs/operators';
+import { EmployeeDetails } from '../Entity/employee-details';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,28 +15,37 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApplyDenyService {
-  BASE_URL='http://localhost:8080/'
-  GET_URL = this.BASE_URL + '/leave/details/11'
+  BASE_URL='http://localhost:8080'
+  GET_URL = this.BASE_URL + '/leave/details/'
   POST_ACCEPTED_URL = this.BASE_URL + '/leave/details/accepted'
   POST_DENIED_URL = this.BASE_URL + '/leave/details/denied'
+  GET_ALL_PENDING = this.BASE_URL + '/leave/details/pending'
 
   
   constructor(private http:HttpClient) { }
 
-  getLeaveData():Observable<LeaveDetails>{
-   return this.http.get<LeaveDetails>(this.GET_URL)
+  getLeaveData(id:number):Observable<LeaveDetails>{
+    let get_url_id = this.GET_URL + id;
+    return this.http.get<LeaveDetails>(get_url_id)
              .pipe(
                  catchError(this.handleError)
               );
   }
 
   postAcceptLeave(leaveDetails:LeaveDetails){
-    let url = leaveDetails.status == 'approve' ? 
+    let url = leaveDetails.acceptance == 'approved' ? 
                               this.POST_ACCEPTED_URL : this.POST_DENIED_URL;
     return this.http.post<LeaveDetails>(url, leaveDetails, httpOptions)
               .pipe(
                 catchError(e => this.handleError(e))
               );
+  }
+
+  getAllPendingLeaves(){
+      return this.http.get<EmployeeDetails[]>(this.GET_ALL_PENDING)
+              .pipe(
+                  catchError(this.handleError)
+              )
   }
 
   private handleError(error:HttpErrorResponse){

@@ -9,7 +9,8 @@ export class LeaveDetails {
     leaveType:string;
     reason:string;
     status:string;
-    comments:string;
+    acceptance:string;
+    managerComments:string;
 
     constructor(){
         this.leaveId=0;
@@ -21,6 +22,7 @@ export class LeaveDetails {
         this.days=0;
         this.reason='';
         this.status='';
-        this.comments;
+        this.acceptance='';
+        this.managerComments='';
     }
 }

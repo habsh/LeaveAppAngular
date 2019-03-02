@@ -1,0 +1,64 @@
+<div class="container" >
+    <div>
+      <div>
+        <h1>Approve Deny Leave</h1>
+      </div><br>
+      <div class="row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-2">
+          <table>
+            <tr><td><div>Employee Id:</div></td></tr>
+            <tr><td><div>Employee Name:</div></td></tr>
+            <tr><td><div>Leave Balance:</div></td></tr>
+          </table>
+          <!-- <div>Employee Id: {{ employeeId }}</div>
+          <div>Employee Name: {{ employeeName }}</div>
+          <div>Leave Balance: {{ leaveBalance }}</div> -->
+        </div>
+        <div class="col-lg-3">
+          <table>
+            <tr><td><div>{{ leaveDetails.employeeId }}</div></td></tr>
+            <tr><td><div>{{ leaveDetails.employeeName }}</div></td></tr>
+            <tr><td><div>{{ leaveDetails.leaveBalance }}</div></td></tr>
+          </table>
+          <!-- <div>{{ test.eno }}</div>
+          <div>{{ test.ename }}</div>
+          <div>{{ test.esalary }}</div> -->
+        </div>
+        <div class="col-lg-2">
+          <div>Start Date:</div>
+          <div>End Date:</div>
+          <div>Number of Days:</div>
+          <div>Leave Type:</div>
+          <div>Reason:</div>
+        </div>
+        <div class="col-lg-3">
+          <div>{{ leaveDetails.startDate }}</div>
+          <div>{{ leaveDetails.endDate }}</div>
+          <div>{{ leaveDetails.days }}</div>
+          <div>{{ leaveDetails.leaveType }}</div>
+          <div>{{ leaveDetails.reason }}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2">Comments:</div>
+        <div class="col-md-3 form-group">
+          <textarea class="form-control z-depth-1" id="comments" rows="3" [(ngModel)]="leaveDetails.managerComments"></textarea>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-1.5">
+          <button id="approved" class="btn btn-primary" (click)="updateLeaveDetails($event.target.id)">Approve</button>
+        </div>
+        <div class="col-xs-1">
+          <button id="denied" class="btn btn-primary" (click)="updateLeaveDetails($event.target.id)">Deny</button>
+        </div>
+        <div class="col-xs-1.5">
+          <button class="btn btn-primary" [routerLink]="['decision']">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
