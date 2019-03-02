@@ -5,4 +5,30 @@ button {
 } 
 #comments {
     font-size:10pt;
-}   
+}  
+
+table.buttons {
+    margin: 0px auto;
+    padding: 15px;
+    text-align: center;
+}
+
+table.comments {
+    border: 1px;
+    vertical-align: top;
+}
+
+tr,td{
+    padding: 5px;
+}
+
+td.comment {
+    vertical-align: top;
+}
+
+td.textarea {
+    text-align: left;
+    table-layout: fixed;
+    width: 100%;
+}
+

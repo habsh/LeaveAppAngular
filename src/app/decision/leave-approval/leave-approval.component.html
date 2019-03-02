@@ -6,59 +6,82 @@
       <div class="row">
         <div class="col-lg-2">
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-3">
           <table>
-            <tr><td><div>Employee Id:</div></td></tr>
-            <tr><td><div>Employee Name:</div></td></tr>
-            <tr><td><div>Leave Balance:</div></td></tr>
+            <tr>
+              <td><div>Employee Id:</div></td>
+              <td><div>{{ leaveDetails.employeeId }}</div></td>
+            </tr>
+            <tr>
+              <td><div>Employee Name:</div></td>
+              <td><div>{{ leaveDetails.employeeName }}</div></td>
+            </tr>
+            <tr>
+              <td><div>Leave Balance:</div></td>
+              <td><div>{{ leaveDetails.leaveBalance }}</div></td>
+            </tr>
           </table>
           <!-- <div>Employee Id: {{ employeeId }}</div>
           <div>Employee Name: {{ employeeName }}</div>
           <div>Leave Balance: {{ leaveBalance }}</div> -->
         </div>
+        <div class="col-md-2"></div>
         <div class="col-lg-3">
           <table>
-            <tr><td><div>{{ leaveDetails.employeeId }}</div></td></tr>
-            <tr><td><div>{{ leaveDetails.employeeName }}</div></td></tr>
-            <tr><td><div>{{ leaveDetails.leaveBalance }}</div></td></tr>
+            <tr>
+              <td><div>Start Date:</div></td>
+              <td><div>{{ leaveDetails.startDate }}</div></td>
+            </tr>
+            <tr>
+              <td><div>End Date:</div></td>
+              <td><div>{{ leaveDetails.endDate }}</div></td>
+            </tr>
+            <tr>
+              <td><div>Number of Days:</div></td>
+              <td><div>{{ leaveDetails.days }}</div></td>
+            </tr>
+            <tr>
+              <td><div>Leave Type:</div></td>
+              <td><div>{{ leaveDetails.leaveType }}</div></td>
+            </tr>
+            <tr>
+              <td><div>Reason:</div></td>
+              <td><div>{{ leaveDetails.reason }}</div></td>
+            </tr>
           </table>
-          <!-- <div>{{ test.eno }}</div>
-          <div>{{ test.ename }}</div>
-          <div>{{ test.esalary }}</div> -->
         </div>
-        <div class="col-lg-2">
-          <div>Start Date:</div>
-          <div>End Date:</div>
-          <div>Number of Days:</div>
-          <div>Leave Type:</div>
-          <div>Reason:</div>
-        </div>
-        <div class="col-lg-3">
-          <div>{{ leaveDetails.startDate }}</div>
-          <div>{{ leaveDetails.endDate }}</div>
-          <div>{{ leaveDetails.days }}</div>
-          <div>{{ leaveDetails.leaveType }}</div>
-          <div>{{ leaveDetails.reason }}</div>
-        </div>
+        <div class="col-lg-2"></div>
       </div>
+
+      
       <div class="row">
         <div class="col-lg-2"></div>
-        <div class="col-lg-2">Comments:</div>
-        <div class="col-md-3 form-group">
-          <textarea class="form-control z-depth-1" id="comments" rows="3" [(ngModel)]="leaveDetails.managerComments"></textarea>
+          <div class="col-lg-5">
+            <table class="comments">
+              <tr>
+                <td class="comment">Comments:</td>
+                <td class="textarea">
+                  <textarea class="form-control z-depth-1" id="comments" rows="3" [(ngModel)]="leaveDetails.managerComments"></textarea>
+                </td>
+              </tr>
+            </table>
         </div>
       </div>
       <br>
-      <div class="row">
-        <div class="col-xs-1.5">
+      
+      <table class="buttons">
+        <tr>
+        <td>
           <button id="approved" class="btn btn-primary" (click)="updateLeaveDetails($event.target.id)">Approve</button>
-        </div>
-        <div class="col-xs-1">
+        </td>
+        <td>
           <button id="denied" class="btn btn-primary" (click)="updateLeaveDetails($event.target.id)">Deny</button>
-        </div>
-        <div class="col-xs-1.5">
+        </td>
+        <td>
           <button class="btn btn-primary" [routerLink]="['decision']">Cancel</button>
-        </div>
-      </div>
+        </td>
+      <tr>
+    </table>
+
     </div>
   </div>
