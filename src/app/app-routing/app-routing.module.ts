@@ -10,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
     {
-        path:'apply/:empId',
+        path:'apply',
         component:ApplyComponent
     },
     {

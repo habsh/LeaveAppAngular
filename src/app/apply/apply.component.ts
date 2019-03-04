@@ -53,7 +53,7 @@ public onSubmit(){
 
   if(this.applyLeaveForm.valid){
     this.applyLeaveForm.controls["Number_Of_Days"].setValue(this.numDays);
-    this.applyLeaveForm.controls["Employee_ID"].setValue(this.route.snapshot.params['empId']);
+    this.applyLeaveForm.controls["Employee_ID"].setValue(sessionStorage.getItem("empId"));
     this.restService.update<any[]>(this.applyLeaveForm)
       .subscribe((data: any[]) => this.restErrors = data,
       error => () =>{
