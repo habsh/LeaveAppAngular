@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from './employee.entity';
+
 
 @Component({
   selector: 'app-personal',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-
+  employee = new Employee();
   constructor() { }
 
   ngOnInit() {
+    this.employee.loadFromSessionStorage()
   }
 
 }
