@@ -5,11 +5,11 @@
   <ng-container *ngFor="let emp of leaveData">
     <tr>
       <th colspan="2">Employee ID:</th>
-      <th>{{emp.empId}}</th>
+      <th>{{emp.employeeId}}</th>
       <th colspan="2">Employee Name:</th>
-      <th>{{emp.empName}}</th>
+      <th>{{emp.employeeName}}</th>
       <th colspan="2">Employee Leave Balance: </th>
-      <th>{{emp.empBalance}}</th>
+      <th>{{emp.leaveBalance}}</th>
     </tr>
     <tr>
       <th></th>
@@ -22,13 +22,13 @@
       <th colspan="2">Reason</th>
     </tr>
     <ng-container *ngFor="let leav of emp.leaves">
-      <tr (click)="selectObj(leav.leaveId)">
+      <tr (click)="selectObj(leav)" [ngClass]="{'highlight':leav.leaveId==leaveDataId}">
         <td></td>
         <td>{{leav.leaveId}}</td>
         <td>{{leav.days}}</td>
-        <td>{{leav.start}}</td>
-        <td>{{leav.end}}</td>
-        <td>{{leav.type}}</td>
+        <td>{{leav.startDate}}</td>
+        <td>{{leav.endDate}}</td>
+        <td>{{leav.leaveType}}</td>
         <td>{{leav.status}}</td>
         <td colspan="2">{{leav.reason}}</td>
       </tr>
@@ -39,7 +39,6 @@
 </table>
 </div>
 <br>
-<button (click)="decision('approve')" type="button" >Approve</button>
-<button (click)="decision('deny')" type="button" >Deny</button>
 
-<script data-require="angular-bootstrap@0.12.0" data-semver="0.12.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<button type="button" (click)="approvalRoute()">Approve/Deny</button>
+

@@ -7,6 +7,7 @@ import { PersonalComponent } from '../personal/personal.component';
 import { ManagerComponent } from '../manager/manager.component';
 import { DecisionComponent } from '../decision/decision.component';
 import { LoginComponent } from '../login/login.component';
+import { LeaveApprovalComponent } from '../decision/leave-approval/leave-approval.component';
 
 const routes: Routes = [
     {
@@ -29,6 +30,15 @@ const routes: Routes = [
         path:'details',
         component:PersonalComponent
     },
+    {
+        path:'decision/leave-approval/:leaveId',
+        component:LeaveApprovalComponent
+    },
+    {
+        path:'decision/leave-approval/:something/decision',
+        redirectTo: 'decision'
+    },
+ 
     {
       path:'status',
       component: StatusComponent

@@ -1,86 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders,HttpErrorResponse, HttpHandler } from '@angular/common/http';
+import { ApplyDenyService } from './service/apply-deny.service';
+import { EmployeeDetails } from './Entity/employee-details';
+import { LeaveDetails } from './entity/leave-details';
+import { Router } from '@angular/router';
 
-var jsontxt=`[
-  {
-    "empId":123,
-    "empName":"Ace",
-    "empBalance":12,
-    "leaves":[
-      {
-        "leaveId":123,
-        "days":3,
-        "start": "2012-05-10",
-        "end": "2012-05-12",
-        "type": "earned",
-        "status": "Pending",
-        "reason": "leave"
-      },
-      {
-        "leaveId":124,
-        "days":2,
-        "start": "2012-05-10",
-        "end": "2012-05-12",
-        "type": "earned",
-        "status": "Pending",
-        "reason": "leave"
-      }
-    ]
-  },
-  {
-    "empId":456,
-    "empName":"Bart",
-    "empBalance":12,
-    "leaves":[
-      {
-        "leaveId":125,
-        "days":3,
-        "start": "2012-05-10",
-        "end": "2012-05-12",
-        "type": "earned",
-        "status": "Pending",
-        "reason": "leave"
-      },
-      {
-        "leaveId":126,
-        "days":2,
-        "start": "2012-05-10",
-        "end": "2012-05-12",
-        "type": "earned",
-        "status": "Pending",
-        "reason": "leave"
-      }
-    ]
-  }
-]
-`;
-var json = JSON.parse(jsontxt);
 @Component({
   selector: 'app-decision',
   templateUrl: './decision.component.html',
-  styleUrls: ['./decision.component.css']
+  styleUrls: ['./decision.component.css'],
+  providers: [ApplyDenyService]
 })
 export class DecisionComponent implements OnInit {
-  leaveData:string[];
-  constructor(private http:HttpClient) { }
-  selectedItem
+
+  leaveDataId:number;
+  leaveData:EmployeeDetails[];
+
+  constructor(private applyDenyService:ApplyDenyService, private route:Router) { }
   ngOnInit() 
-  {this.leaveData=json;
-    console.log(this.leaveData);
-    this.http.get("https://reqres.in/api/users?page=2").subscribe(data => console.log(data));
+  {
+    
+    this.applyDenyService.getAllPendingLeaves().subscribe((data:EmployeeDetails[]) => 
+                                                    {
+                                                      console.log(data);
+                                                      //this.leaveData = JSON.parse(EmployeeDetails[0]);
+                                                      this.leaveData = data;
+                                                    },
+                                                    error => alert(error));
     
   }
+
+
   decision(type){
-    if(this.selectedItem==null){
+    if(this.leaveDataId==null){
       window.alert("No item was selected!")
     }else{
-      window.alert(type+" for "+this.selectedItem);
+      window.alert(type+" for "+this.leaveDataId);
+
     }
     
   }
-  selectObj(leaveId){
-      console.log(leaveId)
-      this.selectedItem=leaveId
+  selectObj(leave){
+      console.log(leave.leaveId)
+      this.leaveDataId=null;
+      this.leaveDataId=leave.leaveId;
+  }
+
+  approvalRoute(){
+    let url = 'decision/leave-approval/'+this.leaveDataId
+    if(this.leaveDataId)
+      this.route.navigateByUrl(url);
   }
 
 }
