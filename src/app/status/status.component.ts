@@ -55,7 +55,7 @@ export class StatusComponent implements OnInit {
     this.http.get(this.url).subscribe(data => this.leaveData=data);
     }
   create(){
-    location.href= "/apply/335"
+    location.href= "/apply"
   }
   expDetails(leav){
     console.log(leav)
