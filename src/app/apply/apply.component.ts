@@ -18,7 +18,8 @@ export class ApplyComponent implements OnInit{
   testError = false;
   numDays:number;
   restErrors: any[];
-   constructor(private fb: FormBuilder, private restService: RestService,private route:ActivatedRoute,) {  }
+   constructor(private fb: FormBuilder, private restService: RestService,
+    private route:ActivatedRoute, private router:Router) {  }
   ngOnInit() {
       this.applyLeaveForm = this.fb.group({
         Start_Date: ['', Validators.required ],
@@ -60,7 +61,16 @@ public onSubmit(){
         console.log("submitted w/ errors");
       },
       () => {
-        console.log("submitted");
+        if (this.restErrors['errors'].length > 0){
+          this.restErrors['errors'].forEach((err) => {
+            console.log(err);
+          });
+        }
+        else{
+          this.router.navigate(['status']);
+          console.log('successfully submitted');
+          //have a dialog pop up
+        }
       });
   }
 
