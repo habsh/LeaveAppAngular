@@ -40,7 +40,7 @@ export class StatusComponent implements OnInit {
 
   title = 'chkleave';
   asc=true;
-  leaveData:string[];
+  leaveData:any;
   outputData;
   public show:boolean = true;
   hideView=-1;
@@ -50,8 +50,7 @@ export class StatusComponent implements OnInit {
   ngOnInit(){
     this.leaveData=json;
     this.sortIt("leaveId");
-    console.log(this.leaveData);
-    this.http.get("https://reqres.in/api/users?page=2").subscribe(data => console.log(data));
+    this.http.get("http://localhost:8080/leave/status/1").subscribe(data => this.leaveData=data);
     }
   create(){
     location.href= "/apply/335"
