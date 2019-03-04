@@ -26,7 +26,7 @@ const routes: Routes = [
         component:ManagerComponent
     },
     {
-        path:'details/:empID',
+        path:'details',
         component:PersonalComponent
     },
     {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from './employee.entity';
 import { ActivatedRoute } from '@angular/router';
 import { PersonalService } from './personal.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,13 +12,14 @@ import { PersonalService } from './personal.service';
   providers: [PersonalService]
 })
 export class PersonalComponent implements OnInit {
-  employee = new Employee();
+  employee;
   constructor(private route: ActivatedRoute, private personalService:PersonalService) { }
 
   ngOnInit() {
     // this.employee.loadFromSessionStorage()
-    this.personalService.obtainID(this.route.snapshot.params['empID']).subscribe((data: Employee) => 
-        this.employee = data);
+    let empId:number = parseInt(sessionStorage.getItem("empId"));
+    this.personalService.obtainID(empId).subscribe((data: any[]) => this.employee = data);
+    
   }
 
 }

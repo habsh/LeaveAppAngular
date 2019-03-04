@@ -13,11 +13,7 @@ export class PersonalService {
   constructor(private personal:HttpClient) { }
 
   obtainID(type: number) {
-    let get_url_id = this.GET_URL + type;
-    return this.personal.get<any>(this.GET_URL)
-        .pipe(
-          catchError(this.handleError)
-        );
+    return this.personal.get<any>("http://localhost:8765/details/"+type);
   }
 
   private handleError(error:HttpErrorResponse) {
