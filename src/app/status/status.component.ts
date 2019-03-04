@@ -44,13 +44,15 @@ export class StatusComponent implements OnInit {
   outputData;
   public show:boolean = true;
   hideView=-1;
+  url:string;
   constructor(private http:HttpClient){
   }
   
   ngOnInit(){
     this.leaveData=json;
     this.sortIt("leaveId");
-    this.http.get("http://localhost:8080/leave/status/1").subscribe(data => this.leaveData=data);
+    this.url="http://localhost:8080/leave/status/"+sessionStorage.getItem("empId")
+    this.http.get(this.url).subscribe(data => this.leaveData=data);
     }
   create(){
     location.href= "/apply/335"
