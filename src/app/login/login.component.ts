@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.empId = 335;
+    this.empId = 1;
   }
   login(){
     sessionStorage.setItem("empId",this.empId.toString())

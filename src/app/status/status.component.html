@@ -3,37 +3,37 @@
 <table style="width:100%">
   
   <tr>
-    <th (click)="sortIt('leaveId')" class="hidden-xs hidden-sm">Leave ID</th>
-    <th (click)="sortIt('days')"># of days</th>
-    <th (click)="sortIt('start')">Start Date</th>
-    <th (click)="sortIt('end')" class="hidden-xs hidden-sm">End Date</th>
-    <th (click)="sortIt('type')">Leave Type</th>
-    <th (click)="sortIt('status')">Status</th>
-    <th (click)="sortIt('reason')">Reason</th>
-    <th (click)="sortIt('applied')" class="hidden-xs">Applied On</th>
-    <th (click)="sortIt('comments')" class="hidden-xs">Manager Comments</th>
+    <th (click)="sortIt('leaveID')" class="hidden-xs hidden-sm">Leave ID</th>
+    <th (click)="sortIt('numDays')"># of days</th>
+    <th (click)="sortIt('startDate')">Start Date</th>
+    <th (click)="sortIt('endDate')" class="hidden-xs hidden-sm">End Date</th>
+    <th (click)="sortIt('leaveType')">Leave Type</th>
+    <th (click)="sortIt('leaveStatus')">Status</th>
+    <th (click)="sortIt('reasons')">Reason</th>
+    <th (click)="sortIt('appliedOn')" class="hidden-xs">Applied On</th>
+    <th (click)="sortIt('managerComments')" class="hidden-xs">Manager Comments</th>
   </tr>
 
   <ng-container *ngFor="let leav of leaveData;index as i" [attr.data-index]="i">
   <tr  (click)="expDetails(leav)" >
-    <td class="hidden-xs hidden-sm">{{leav.leaveId}}</td>
-    <td>{{leav.days}}</td>
-    <td>{{leav.start}}</td>
-    <td class="hidden-xs hidden-sm">{{leav.end}}</td>
-    <td>{{leav.type}}</td>
-    <td>{{leav.status}}</td>
-    <td>{{leav.reason}}</td>
-    <td class="hidden-xs">{{leav.applied}}</td>
-    <td class="hidden-xs">{{leav.comments}}</td>
+    <td class="hidden-xs hidden-sm">{{leav.leaveID}}</td>
+    <td>{{leav.numDays}}</td>
+    <td>{{leav.startDate | date:'yyyy-MM-dd'}}</td>
+    <td class="hidden-xs hidden-sm">{{leav.endDate | date:'yyyy-MM-dd'}}</td>
+    <td>{{leav.leaveType}}</td>
+    <td>{{leav.leaveStatus}}</td>
+    <td>{{leav.reasons}}</td>
+    <td class="hidden-xs">{{leav.appliedOn | date:'yyyy-MM-dd'}}</td>
+    <td class="hidden-xs">{{leav.managerComments}}</td>
   </tr>
   <ng-container [attr.id]="'undoBtn'+i" *ngIf="leav.showButton" class="editBtn">
     <tr class="visible-xs visible-sm">
-      <td colspan="2" id="Xtra">Leave ID: {{leav.leaveId}}</td>
-      <td colspan="3" id=Xtra>End Date: {{leav.end}}</td>
+      <td colspan="2" id="Xtra">Leave ID: {{leav.leaveID}}</td>
+      <td colspan="3" id=Xtra>End Date: {{leav.endDate | date:'yyyy-MM-dd'}}</td>
     </tr>
     <tr class="visible-xs" >
-      <td colspan="2" id="Xtra">Applied: {{leav.applied}}</td>
-      <td colspan="3" id="Xtra">Manager Comments: {{leav.comments}}</td>
+      <td colspan="2" id="Xtra">Applied: {{leav.appliedOn | date:'yyyy-MM-dd'}}</td>
+      <td colspan="3" id="Xtra">Manager Comments: {{leav.managerComments}}</td>
     </tr>
   </ng-container>
   </ng-container>
@@ -41,6 +41,5 @@
 </div>
 <br>
 <button (click)="create()" type="button" >New Application</button>
-<button (click)="refreshIt()" type="button" >refresh</button>
 
 <script data-require="angular-bootstrap@0.12.0" data-semver="0.12.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
