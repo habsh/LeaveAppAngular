@@ -1,44 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {LoginService} from '../login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers : [LoginService]
 })
 export class LoginComponent implements OnInit {
+  username: string = ''
+  password: string = ''
   empId: number;
-  empName: string;
-  empPhone: number;
-  empDept: string;
-  empMail: string;
-  empDoj: Date;
-  leaveBalance: number;
-  empMngId: number;
-
-  constructor() { }
-
+  errorMessage = 'invalid credentials'
+  invalidLogin = false
+  
+  //dependency injection
+  constructor(private router: Router, private service: LoginService) { }
+  
   ngOnInit() {
-    this.empId = 335;
-    this.empName = 'Bob Harris';
-    this.empPhone = 7035554321;
-    this.empDept = 'Salaries';
-    this.empMail = 'monkeybrow@yahoo.com';
-    this.empDoj = new Date(1954, 3, 28);
-    this.leaveBalance = 8;
-    this.empMngId = 250;
+    this.empId = null;
   }
 
-  login() {
-    sessionStorage.setItem("empId", this.empId.toString())
-    sessionStorage.setItem("empName", this.empName.toString())
-    sessionStorage.setItem("empPhone", this.empPhone.toString())
-    sessionStorage.setItem("empDept", this.empDept.toString())
-    sessionStorage.setItem("empMail", this.empMail.toString())
-    sessionStorage.setItem("empDoj", '' + this.empDoj.getTime())
-    sessionStorage.setItem("leaveBalance", this.leaveBalance.toString())
-    sessionStorage.setItem("empMngId", this.empMngId.toString())
-    location.href = "/"
-  }
-
+  handleLogin():void{
+    //this.service.getUser(this.empId).subscribe((data: {})) =>
+    this.service.getUser(this.username, this.password).subscribe((data:{}) => {
+      if (data!=null){
+          this.empId=data.empId
+          sessionStorage.setItem("empId",this.empId.toString())
+          this.router.navigate([''])
+          this.invalidLogin= false
+        }
+        else{
+          this.invalidLogin = true;
+        }
+    } )
+  }  
 }
-
