@@ -1,11 +1,12 @@
 import { Component ,OnInit, Input} from '@angular/core';
-import { FormsModule,ReactiveFormsModule,FormGroup,  FormBuilder,  Validators, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { RestService } from './rest.service'
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'apply-root',
-  providers: [  ],
+  providers: [ ],
   templateUrl: './apply.component.html',
   styleUrls: ['./apply.component.css']
 })
@@ -18,7 +19,8 @@ export class ApplyComponent implements OnInit{
   testError = false;
   numDays:number;
   restErrors: any[];
-   constructor(private fb: FormBuilder, private restService: RestService,private route:ActivatedRoute,) {  }
+   constructor(private fb: FormBuilder, private restService: RestService,
+    private route:ActivatedRoute, private router:Router) {  }
   ngOnInit() {
       this.applyLeaveForm = this.fb.group({
         Start_Date: ['', Validators.required ],
@@ -31,7 +33,7 @@ export class ApplyComponent implements OnInit{
       
       );
   }
-  
+
   dateLessThan(first: string, last: string) {
   
     return (group: FormGroup): {[key: string]: any} => {
@@ -60,7 +62,20 @@ public onSubmit(){
         console.log("submitted w/ errors");
       },
       () => {
-        console.log("submitted");
+        if (this.restErrors['errors'].length > 0){
+          let concat = "";
+          this.restErrors['errors'].forEach((err) => {
+            concat += err + "\n";
+            console.log(err);
+          });
+          alert(concat);
+        }
+        else{
+          alert('Leave Application Submission Successful!');
+          console.log('successfully submitted');
+          this.router.navigate(['status']);
+          //have a dialog pop up
+        }
       });
   }
 
