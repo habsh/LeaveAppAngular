@@ -1,6 +1,14 @@
-<p>
-  login works!
-</p>
-<a (click)="login()">
-  Test
-</a>
+<div style="text-align:center">
+    <h3 font = small>
+      {{ title }}
+    </h3>
+  
+  
+  <div>
+    <h2>Log in</h2>
+  User name: <input type = "text" name = "username" [(ngModel)] = "username"><br>
+  Password: <input type = "password" name = "password" [(ngModel)] = "password"><br>
+  <button (click) = handleLogin()>Login</button>
+  <small *ngIf='invalidLogin'>{{errorMessage}}</small><br>
+  </div>
+  </div>

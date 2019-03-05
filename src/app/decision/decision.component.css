@@ -2,7 +2,7 @@ table th{
     background-color:#4571C7;
     color:white;
 }
-table td{
+table tr{
     background-color:#CED6EB;
 }
 table{
@@ -17,4 +17,9 @@ button {
 }
 #Xtra{
     background-color: #B3BACC;
+}
+
+table tr.highlight{
+  background-color: darkblue; 
+  color: azure;
 }
