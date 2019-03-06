@@ -32,8 +32,8 @@ export class RestService {
         "numDays":formControl.controls['Number_Of_Days'].value,
         "leaveType":formControl.controls['Leave_Type'].value,
         "reasons":formControl.controls['Leave_Reason'].value,
-        "employee":formControl.controls['Employee_ID'].value
-
+        "employee":formControl.controls['Employee_ID'].value,
+        "leave":formControl.controls["Leave_ID"].value
       }),{headers: headers}
     );
   }

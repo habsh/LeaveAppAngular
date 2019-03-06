@@ -18,6 +18,7 @@ export class ApplyComponent implements OnInit{
   applyLeaveForm: FormGroup;
   submitted = false;
   testError = false;
+  pageTitle="Apply Leave"
   numDays:number;
   restErrors: any[];
    constructor(public datepipe: DatePipe,private fb: FormBuilder, private restService: RestService,
@@ -41,6 +42,7 @@ export class ApplyComponent implements OnInit{
       
       );
       if(this.leaveId){
+        this.pageTitle="Edit Existing Leave"
         this.restService.get(this.leaveId).subscribe(data => this.fillCurrentLeave(data))
       }
   }
