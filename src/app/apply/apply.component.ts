@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./apply.component.css']
 })
 export class ApplyComponent implements OnInit{
-  
+  leaveId:number;
   empId:number;
   title = "Input"
   applyLeaveForm: FormGroup;
@@ -20,7 +20,15 @@ export class ApplyComponent implements OnInit{
   numDays:number;
   restErrors: any[];
    constructor(private fb: FormBuilder, private restService: RestService,
-    private route:ActivatedRoute, private router:Router) {  }
+    private route:ActivatedRoute, private router:Router) {
+      
+      this.leaveId= parseInt(this.route.snapshot.paramMap.get("leaveId"))
+      if(this.leaveId){
+        console.log("Edit leave with id: "+this.leaveId)
+      }
+    }
+
+   
   ngOnInit() {
       this.applyLeaveForm = this.fb.group({
         Start_Date: ['', Validators.required ],

@@ -11,7 +11,7 @@ export class RestService {
 
   private actionUrl: string;
   constructor(private http: HttpClient) { 
-    this.actionUrl = "http://localhost:8765/applyLeave";
+    this.actionUrl = "http://localhost:8080/applyLeave";
   }
 
   public update<T>(formControl: FormGroup): Observable<T>{

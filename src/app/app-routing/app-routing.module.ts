@@ -18,6 +18,11 @@ const routes: Routes = [
         data:{title:"Apply for Leave"}
     },
     {
+      path:'apply/:leaveId',
+      component:ApplyComponent,
+      data:{title:"Edit Leave"}
+    },
+    {
         path:'login',
         component:LoginComponent,
         data:{title:"Login - LeaveApp"}
