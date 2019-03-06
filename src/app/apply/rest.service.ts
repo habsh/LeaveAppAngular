@@ -14,6 +14,10 @@ export class RestService {
     this.actionUrl = "http://localhost:8080/applyLeave";
   }
 
+  public get(leaveId:number){
+    return this.http.get("http://localhost:8080/leave/details/"+leaveId)
+  }
+
   public update<T>(formControl: FormGroup): Observable<T>{
 
     let headers = new HttpHeaders({
