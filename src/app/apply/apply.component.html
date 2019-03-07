@@ -9,7 +9,7 @@
 </head>
 <body >
     <div class="container" style="width:600px">
-    <div ><h1>Apply Leave </h1></div>
+    <div ><h1>{{pageTitle}}</h1></div>
     <form [formGroup]="applyLeaveForm" (ngSubmit)="onSubmit()" method="post"> 
         <div class="form-group" > 
             
@@ -42,7 +42,8 @@
                 </div>  
         
         <button type="submit" id="submit">Apply</button> 
-        <button type="reset" id="reset">Cancel</button>  
+        <button type="reset" id="reset">Reset</button>
+        <button (click)="cancel()">Cancel</button>  
       
     </form>
     </div>

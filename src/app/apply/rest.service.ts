@@ -11,7 +11,11 @@ export class RestService {
 
   private actionUrl: string;
   constructor(private http: HttpClient) { 
-    this.actionUrl = "http://localhost:8765/applyLeave";
+    this.actionUrl = "http://localhost:8080/applyLeave";
+  }
+
+  public get(leaveId:number){
+    return this.http.get("http://localhost:8080/leave/details/"+leaveId)
   }
 
   public update<T>(formControl: FormGroup): Observable<T>{
@@ -28,8 +32,8 @@ export class RestService {
         "numDays":formControl.controls['Number_Of_Days'].value,
         "leaveType":formControl.controls['Leave_Type'].value,
         "reasons":formControl.controls['Leave_Reason'].value,
-        "employee":formControl.controls['Employee_ID'].value
-
+        "employee":formControl.controls['Employee_ID'].value,
+        "leave":formControl.controls["Leave_ID"].value
       }),{headers: headers}
     );
   }
