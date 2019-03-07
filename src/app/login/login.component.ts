@@ -12,8 +12,9 @@ export class LoginComponent implements OnInit {
   username: string = ''
   password: string = ''
   empId: number;
-  errorMessage = 'invalid credentials'
+  errorMessage = ''
   invalidLogin = false
+  userNotFound = "User not found"
   
   //dependency injection
   constructor(private router: Router, private service: LoginService) { }
@@ -27,16 +28,26 @@ export class LoginComponent implements OnInit {
     var response:{[empId: string]: string}
     //this.service.getUser(this.empId).subscribe((data: {})) =>
     this.service.getUser(this.username, this.password).subscribe((data:{}) => {
-      if (data!=null){
-          response=data;
-          this.empId=parseInt(response.empId)
+      if (data['user']){
+          this.empId=data['empId']
           sessionStorage.setItem("empId",this.empId.toString())
           this.router.navigate([''])
           this.invalidLogin= false
         }
         else{
+          this.errorMessage = 'invalid credentials'
           this.invalidLogin = true;
         }
-    } )
+    },
+    
+    err => { if((err.error.message) == this.userNotFound){
+      this.errorMessage = 'user does not exist'
+      this.invalidLogin = true;
+    }
+
+    console.log(err.error.message)}
+    ) 
+    
+
   }  
 }
