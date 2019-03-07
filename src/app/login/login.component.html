@@ -1,0 +1,14 @@
+<div style="text-align:center">
+  <h3 font = small>
+    {{ title }}
+  </h3>
+
+<h2>Log in</h2>
+Username:<br>
+ <input type = "text" name = "username" placeholder="enter username" [(ngModel)] = "username"><br>
+Password: <br>
+<input type = "password" name = "password" placeholder="enter password" [(ngModel)] = "password"><br>
+<button (click) = handleLogin()>Login</button>
+<small *ngIf='invalidLogin'>{{errorMessage}}</small><br>
+don't have an account?<a [routerLink]="['/register']" class="btn btn-link">register</a>
+</div>

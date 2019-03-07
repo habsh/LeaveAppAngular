@@ -1,0 +1,25 @@
+table th{
+    background-color:#4571C7;
+    color:white;
+}
+table tr{
+    background-color:#CED6EB;
+}
+table{
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+button {
+    background-color: #407AC0;
+    color:white;
+    margin:15px;
+    padding:8px 15px 5px 15px;
+}
+#Xtra{
+    background-color: #B3BACC;
+}
+
+table tr.highlight{
+  background-color: darkblue; 
+  color: azure;
+}

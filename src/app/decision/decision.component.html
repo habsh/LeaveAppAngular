@@ -1,0 +1,44 @@
+<h2>My Reporting Employees' Pending Leave Applications Section</h2><br><br>
+<div ng-app="myApp" ng-controller="leaveTable">
+<table style="width:100%">
+  
+  <ng-container *ngFor="let emp of leaveData">
+    <tr>
+      <th colspan="2">Employee ID:</th>
+      <th>{{emp.employeeId}}</th>
+      <th colspan="2">Employee Name:</th>
+      <th>{{emp.employeeName}}</th>
+      <th colspan="2">Employee Leave Balance: </th>
+      <th>{{emp.leaveBalance}}</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Leave ID</th>
+      <th># of Days</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Leave Type</th>
+      <th>Status</th>
+      <th colspan="2">Reason</th>
+    </tr>
+    <ng-container *ngFor="let leav of emp.leaves">
+      <tr (click)="selectObj(leav)" [ngClass]="{'highlight':leav.leaveId==leaveDataId}">
+        <td></td>
+        <td>{{leav.leaveId}}</td>
+        <td>{{leav.days}}</td>
+        <td>{{leav.startDate}}</td>
+        <td>{{leav.endDate}}</td>
+        <td>{{leav.leaveType}}</td>
+        <td>{{leav.status}}</td>
+        <td colspan="2">{{leav.reason}}</td>
+      </tr>
+    </ng-container>
+  </ng-container>
+
+  
+</table>
+</div>
+<br>
+
+<button type="button" (click)="approvalRoute()">Approve/Deny</button>
+

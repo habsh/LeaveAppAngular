@@ -1,0 +1,21 @@
+.emp-details {
+    column-count: 2;
+    column-gap: 10px;
+    text-align: left;
+    margin: 25px 50px;
+}
+
+.details-title {
+    text-align: left;
+    margin: 25px 50px;
+}
+
+.info-label {
+    display: inline-flex;
+    width: 120px;
+}
+
+.info-label-available {
+    display: inline-flex;
+    width: 200px;
+}
