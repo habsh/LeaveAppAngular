@@ -47,6 +47,9 @@ export class ApplyComponent implements OnInit{
       }
   }
 
+  cancel(){
+    location.href= "/status"
+  }
   fillCurrentLeave(response){
     console.log(response)
     var date=new Date(response.startDate)

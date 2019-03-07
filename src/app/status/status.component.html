@@ -1,6 +1,6 @@
 <h2>My Leave Applications Section</h2><br><br>
 <div ng-app="myApp" ng-controller="leaveTable">
-<table style="width:100%">
+<table style="width:100%" *ngIf="leaveData">
   
   <tr>
     <th (click)="sortIt('leaveId')" class="hidden-xs hidden-sm">Leave ID</th>
@@ -18,29 +18,30 @@
   <tr  (click)="expDetails(leav)" [ngClass]="{'highlight':leav.leaveID==leaveDataID}">
     <td class="hidden-xs hidden-sm">{{leav.leaveID}}</td>
     <td>{{leav.numDays}}</td>
-    <td>{{leav.startDate | date: 'dd/MM/yyyy'}}</td>
-    <td class="hidden-xs hidden-sm">{{leav.endDate | date: 'dd/MM/yyyy'}}</td>
+    <td>{{leav.startDate | date: 'MM/dd/yyyy'}}</td>
+    <td class="hidden-xs hidden-sm">{{leav.endDate | date: 'MM/dd/yyyy'}}</td>
     <td>{{leav.leaveType}}</td>
     <td>{{leav.leaveStatus}}</td>
     <td>{{leav.reasons}}</td>
-    <td class="hidden-xs">{{leav.appliedOn | date: 'dd/MM/yyyy'}}</td>
+    <td class="hidden-xs">{{leav.appliedOn | date: 'MM/dd/yyyy'}}</td>
     <td class="hidden-xs">{{leav.managerComments}}</td>
   </tr>
   <ng-container [attr.id]="'undoBtn'+i" *ngIf="leav.showButton" class="editBtn">
     <tr class="visible-xs visible-sm">
       <td colspan="2" id="Xtra">Leave ID: {{leav.leaveID}}</td>
-      <td colspan="3" id=Xtra>End Date: {{leav.endDate | date: 'dd/MM/yyyy'}}</td>
+      <td colspan="3" id=Xtra>End Date: {{leav.endDate | date: 'MM/dd/yyyy'}}</td>
     </tr>
     <tr class="visible-xs" >
-      <td colspan="2" id="Xtra">Applied: {{leav.appliedOn | date: 'dd/MM/yyyy'}}</td>
+      <td colspan="2" id="Xtra">Applied: {{leav.appliedOn | date: 'MM/dd/yyyy'}}</td>
       <td colspan="3" id="Xtra">Manager Comments: {{leav.managerComments}}</td>
     </tr>
   </ng-container>
   </ng-container>
 </table>
+<h3 *ngIf="!leaveData">** No Leaves were Created! **</h3>
 </div>
 <br>
 <button (click)="create()" type="button" >New Application</button>
-<button (click)="edit()" type="button" >Edit Leave</button>
+<button (click)="edit()" type="button" *ngIf="leaveData">Edit Leave</button>
 
 <script data-require="angular-bootstrap@0.12.0" data-semver="0.12.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
