@@ -13,6 +13,7 @@ import { ManagerComponent } from './manager/manager.component';
 import { ApplyComponent } from './apply/apply.component';
 import { DecisionComponent } from './decision/decision.component';
 import { LeaveApprovalComponent } from './decision/leave-approval/leave-approval.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { LeaveApprovalComponent } from './decision/leave-approval/leave-approval
     PersonalComponent,
     ManagerComponent,
     ApplyComponent,   
-    DecisionComponent, LeaveApprovalComponent
+    DecisionComponent, LeaveApprovalComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
