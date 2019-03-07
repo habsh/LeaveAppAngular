@@ -1,0 +1,22 @@
+<div style="text-align:center">
+  <h3 font = small>
+    {{ title }}
+  </h3>
+
+<div>
+<h2>Register</h2>
+First Name:<br>
+<input type = "text"  name = "firstNme" placeholder="enter first name" [(ngModel)] = "firstName"><br>
+Last Name:<br>
+<input type = "text" name = "lastName" placeholder="enter last name" [(ngModel)] = "lastName"><br>
+Email:<br>
+<input type = "email" name = "email" placeholder="enter email" [(ngModel)] = "email"><br>
+Username:<br>
+<input type = "text" name = "username" placeholder="enter username" [(ngModel)] = "username"><br>
+Password:<br>
+<input type = "password" name = "password" placeholder="enter password" [(ngModel)] = "password"><br>
+<button (click) = handleRegister()>Register</button>
+<small *ngIf='invalidRegister'>{{errorMessage}}</small><br>
+</div>
+already registered? <a [routerLink]="['/login']" class="btn btn-link">login</a>
+</div>

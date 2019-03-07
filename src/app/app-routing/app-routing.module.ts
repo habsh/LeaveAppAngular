@@ -7,6 +7,7 @@ import { PersonalComponent } from '../personal/personal.component';
 import { ManagerComponent } from '../manager/manager.component';
 import { DecisionComponent } from '../decision/decision.component';
 import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 import { LeaveApprovalComponent } from '../decision/leave-approval/leave-approval.component';
 import {Title} from "@angular/platform-browser";
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -22,6 +23,10 @@ const routes: Routes = [
         component:LoginComponent,
         data:{title:"Login - LeaveApp"}
     },
+    {
+      path:'register',
+      component:RegisterComponent,
+  },
     {
         path:'decision',
         component:DecisionComponent,
