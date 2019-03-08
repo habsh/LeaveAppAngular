@@ -47,8 +47,11 @@ export class DecisionComponent implements OnInit {
 
   approvalRoute(){
     let url = 'decision/leave-approval/'+this.leaveDataId
-    if(this.leaveDataId)
-      this.route.navigateByUrl(url);
-  }
+    if(this.leaveDataId){
+        this.route.navigateByUrl(url);
+    }else{
+      window.alert("Please select a table row.")
+    }
+    }
 
 }
