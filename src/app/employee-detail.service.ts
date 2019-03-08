@@ -5,9 +5,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import {map, catchError, tap} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { environment } from './environment-variables/environment-constants'
 
 
-const endpoint = 'http://192.168.20.203:8181/leaveapp/';
+const endpoint = environment.URL_DN_P+'/leaveapp/';
 const httpOptions ={
     headers: new HttpHeaders({
       'Content-Type':  'application/json'

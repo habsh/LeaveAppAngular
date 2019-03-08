@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplyDenyService } from './service/apply-deny.service';
-import { EmployeeDetails } from './Entity/employee-details';
+import { EmployeeDetails } from './entity/employee-details';
 import { LeaveDetails } from './entity/leave-details';
 import { Router } from '@angular/router';
 
