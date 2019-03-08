@@ -17,22 +17,32 @@ export class StatusComponent implements OnInit {
   public show:boolean = true;
   hideView=-1;
   url:string;
+  leaveDataID:number;
   constructor(private http:HttpClient){
   }
   
   ngOnInit(){
-    
     this.url="http://localhost:8080/leave/status/"+sessionStorage.getItem("empId")
-    this.http.get(this.url).subscribe(data => this.leaveData=data);
+    this.http.get(this.url).subscribe(data => this.leaveData=data,error=>window.alert('Something bad happened; please try again later.'));
     //this.sortIt("leaveId");
     console.log(this.leaveData)
     }
   create(){
     location.href= "/apply"
   }
+  edit(){
+    if(this.leaveDataID){
+      location.href= "/apply/"+this.leaveDataID
+    }else{
+      window.alert("Please select a row.")
+    }
+    
+  }
   expDetails(leav){
-    console.log(leav)
+    console.log(leav.leaveID)
     leav.showButton = !leav.showButton;
+    this.leaveDataID=null;
+    this.leaveDataID=leav.leaveID;
   }
   sortIt(col){
     console.log("sorting by"+col);
