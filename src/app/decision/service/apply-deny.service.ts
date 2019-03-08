@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { LeaveDetails } from '../entity/leave-details';
 import { catchError } from 'rxjs/operators';
 import { EmployeeDetails } from '../Entity/employee-details';
+import { environment } from '../../environment-variables/environment-constants'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,7 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApplyDenyService {
-  BASE_URL='http://localhost:8080'
+  BASE_URL = environment.URL_DN_P
   GET_URL = this.BASE_URL + '/leave/details/'
   POST_ACCEPTED_URL = this.BASE_URL + '/leave/details/accepted'
   POST_DENIED_URL = this.BASE_URL + '/leave/details/denied'

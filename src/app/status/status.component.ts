@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environment-variables/environment-constants'
 
 
 @Component({
@@ -22,7 +23,7 @@ export class StatusComponent implements OnInit {
   }
   
   ngOnInit(){
-    this.url="http://localhost:8080/leave/status/"+sessionStorage.getItem("empId")
+    this.url=environment.URL_DN_P+"/leave/status/"+sessionStorage.getItem("empId")
     this.http.get(this.url).subscribe(data => this.leaveData=data,error=>window.alert('Something bad happened; please try again later.'));
     //this.sortIt("leaveId");
     console.log(this.leaveData)

@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import {Observable} from 'rxjs'
 import { HttpHeaders } from '@angular/common/http';
 import { from } from 'rxjs';
+import { environment } from '../environment-variables/environment-constants'
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class RestService {
 
   private actionUrl: string;
   constructor(private http: HttpClient) { 
-    this.actionUrl = "http://localhost:8080/applyLeave";
+    this.actionUrl = environment.URL_DN_P + "/applyLeave";
   }
 
   public get(leaveId:number){
